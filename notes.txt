@@ -21,3 +21,14 @@ we need to use Reducer when we have multiple useStates depend to each other or w
 5-in 9th section we implemented useReducer and commnted useEffect so the debouncing function cancelled . 
 we can initialize the Reducer function outside of main component function and just call it inside of useReducer . it will read the vaiables automatically .
 6-in 10th section with set the useReducer for the password . then activated the useEffect again but with useReducer this time and changed some arguments of it to work properly . then to have a optimal code we had a issue . with entering 6 charaters the password was valid and we didnt need to validate it anymore and re render the page . so we pulled out  isValid element of emailState and passState using object destructing . 
+7-in 13th section we learnt that we cant just pass data through props because react apps are multi layered and many times for using a data we need to pass a data from a very bottom level component to the top levels or another components through the median components without even using them . so we need to do something that doesnt need passing data ,and thats contextApi . 
+8-in 14th section we used context api in a typical way . 
+we made a folder named store to make auth-contex.js to store the data of ContextApi wich here is was a object storing isLoggedIn : false 
+we should wrap the component that we need to use the data using context api . for example here we we needed isLoggedIn in every part of our project so we warapped the entire App component inside of AuthContext.provider . so we didnt need react fragment anymore . 
+we wrap the component that is using (consuming) the data of ContextApi inside of <AuthContext.consumer> and and then put the entire code of component inside of return of the call back function of it . 
+here we get an Error because in this style provider is not needed . 
+so we created a value property for provider and set the object again but this time we assingned the isLoggedIn value to isLoggedIn to get state of isLoggedIn live . now it worked properly . 
+consider that here AuthContext is a made up up name for our context api and it can be any thing we want . 
+9-in 15th we learnt to use useContext hook instead of consumer 
+using this hook is way too easier and less code and less confusing . 
+you just need to reffer your useContext(name of contextApi) to a constant and use it like before . 
