@@ -1,0 +1,23 @@
+1- first of all we learnt why we should use useEffect . one use of it is when we dont want to change something when the browser restarts(like data , useStates or etc ...) we could use localStorage , but we could get stuck in loops ; like recalling a same function and calling the localStorage.setItem so we use useEffect wich works like this : 
+useState(() => {}, []) . callback function and dependencies array . 
+a) at first run of application it runs after compelete load of current component 
+b) after first run it wont run unless the dependencies array is changed .
+c) when the dependencies change it will run the callback function inside it after full load of current component . 
+in this project we didnt want to change the dependencies and wanted to keep the user logged in when once logged in .
+***useEffect in general is a super important hook that helps you deal with code that should be executed in response to something (like component being loaded ,email address being updated or anything should be executed in response to some other action)
+2-in fourth section we used side effects for validating Email and password input at the same time . (here side effect of changing fields is validating them)
+here we needed to use dependencies . 
+in dependencies we mention items that we are using , for example in login.js we are using ,setFormIsValid, enteredEmail and enteredPassword so we need to write them in dependencies in case if they changed the useEffect will run . but we dont need to mention 'setFormIsValid' because react will automatically handle it .  
+3- in sixth section we learn using cleanup function . it is nesssary to use it because some times we are doing sth important like sending http requests . in login.js we were runing useEffect after every keyperssing . so it makes so many runings and in big projects it can cause bugs and errors . so we need to do a trick and use setTimeout but not directly inside of useEffect because it makes no difference . 
+in useEffect we can use return statements like in functions . 
+so we we used clearTimeout inside of return staement because in useEfect return statement runs first . 
+in login.js the whole idea is to set a 500 miliseconds timer after every keypress and in this time if no key pressed run the useEffect after that 500 miliseconds. 
+actually in useEfect the return statement runs first and then other elements of useEffect run . 
+the code inside of return statement in useEffect doesnt run unless elements inside of useEffect change . here we usually call the function of return statement cleaup function . 
+you can watch 7-useEffect summary in 10th (advanced) folder . 
+we usually call this delay for button debouncing . 
+4- in 8th section useReducer started . in big and more complex projects we need to use useReducer Hook . useReducer is a more advanced form of useState .
+we need to use Reducer when we have multiple useStates depend to each other or we have states that belong together .  
+5-in 9th section we implemented useReducer and commnted useEffect so the debouncing function cancelled . 
+we can initialize the Reducer function outside of main component function and just call it inside of useReducer . it will read the vaiables automatically .
+6-in 10th section with set the useReducer for the password . then activated the useEffect again but with useReducer this time and changed some arguments of it to work properly . then to have a optimal code we had a issue . with entering 6 charaters the password was valid and we didnt need to validate it anymore and re render the page . so we pulled out  isValid element of emailState and passState using object destructing . 
