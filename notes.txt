@@ -32,3 +32,9 @@ consider that here AuthContext is a made up up name for our context api and it c
 9-in 15th we learnt to use useContext hook instead of consumer 
 using this hook is way too easier and less code and less confusing . 
 you just need to reffer your useContext(name of contextApi) to a constant and use it like before . 
+8-in 16th section we learned using useContext dynamically . here for logOut handling . we can pass functions through provider in the object that we made . here it was onLogOut: logOutHandler . then we deleted props chain in the Navigation and MainHeader components . 
+we learnt that we usually have use context api in palces that we know what we are exactly doing and passing data through components and doing nothing else with them . for example in this project in component we didnt use context api for Button component because later we want to use it for other reasons .so we kept using props in it . but in Navigation component we just use the Button for logging out so we can use context api for it . 
+9-in 17th section we customized context Api . for example we implemented logOutHandler in the base auth-context.js ,so we could se onLogOut in our IDE preffers . we also transffered our app component logic into the auth-context.js so we had leaner and cleaner code and single functionality of apps was regarded . but I didnt do that .  
+10-in 10th section I learnt that we should only call react hooks inside of React functions . we should only call react hooks at the top level of react functions not in nested functions or in block statements loke if and ... .
+ALWAYS add eveerything you refer to inside of useEffect as a dependency . unless you know what you are doing like what we did in useEffect of App.js component for log in state of user . (we used localStorage for handling it) . 
+11-in 21th section we used forwardRef hook wich was super bollocks.  
